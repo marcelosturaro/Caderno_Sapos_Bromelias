@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caderno Bromélia</title>
+<meta name="description" content="Coleta de dados de anfíbios e bromélias em campo.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0f5c5c">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+:root{--bg:#eef1ec;--card:#fafbf8;--ink:#1d2b26;--mut:#5b6b64;--line:#c9d2cb;--acc:#0f5c5c;--accink:#fff;--warn:#a63a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a17;--card:#1b2622;--ink:#e6ede9;--mut:#9aaba3;--line:#2f3f39;--acc:#4fb3a9;--accink:#08201d;--warn:#e07b7b}}
+:root[data-theme="dark"]{--bg:#121a17;--card:#1b2622;--ink:#e6ede9;--mut:#9aaba3;--line:#2f3f39;--acc:#4fb3a9;--accink:#08201d;--warn:#e07b7b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,"Segoe UI",Roboto,sans-serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:4px 0 2px}
+.sub{color:var(--mut);margin:0 0 16px}
+form,.list{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:16px}
+fieldset{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 14px}
+legend{font-weight:700;color:var(--acc);padding:0 6px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f{display:flex;flex-direction:column;gap:3px;min-width:0}
+.w{grid-column:1/-1}
+label{font-size:.9rem;color:var(--mut)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px;width:100%;min-height:44px}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+textarea{min-height:70px;resize:vertical}
+button{font:inherit;min-height:44px;border-radius:6px;border:1px solid var(--acc);background:var(--acc);color:var(--accink);padding:0 14px;cursor:pointer;font-weight:700}
+button.s{background:transparent;color:var(--acc)}
+button.d{background:transparent;color:var(--warn);border-color:var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.row>button{flex:1}
+.gps{font-size:.9rem;color:var(--mut);margin:0 0 6px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.top h2{font-size:1.1rem;margin:0}
+.it{border-top:1px solid var(--line);padding:10px 0;display:flex;gap:10px;justify-content:space-between;align-items:center}
+.it b{display:block}
+.it span{color:var(--mut);font-size:.9rem}
+.it .b{display:flex;gap:6px}
+.it button{min-height:40px;padding:0 10px}
+.empty{color:var(--mut);margin:6px 0}
+textarea.out{width:100%;min-height:120px;margin-top:10px;font:13px monospace}
+.msg{margin:10px 0 0;color:var(--mut);font-size:.9rem}
+.hint{display:block;font-size:.78rem;color:var(--mut);font-style:italic;margin-top:2px}
+</style>
+</head>
+<body>
+<main>
+<h1>Caderno Bromélia</h1>
+<p class="sub">Coleta de dados de anfíbios e bromélias em campo. Um registro por espécime/bromélia. Os dados ficam salvos neste aparelho até você exportar.</p>
+
+<form id="f" autocomplete="off">
+<p class="gps" id="gps">Buscando localização…</p>
+
+<fieldset>
+<legend>1) Dados da Espécie</legend>
+<div class="g">
+<div class="f"><label for="num">Número de campo</label><input id="num" required></div>
+<div class="f"><label for="sexo">Sexo</label>
+<select id="sexo"><option value="">—</option><option>Macho</option><option>Fêmea</option><option>Indeterminado</option><option>Girino</option></select>
+<small class="hint">Selecione a opção.</small></div>
+<div class="f w"><label for="esp">Espécie</label>
+<select id="esp" required>
+<option value="">—</option>
+<option>Ololygon perpusilla</option>
+<option>Dendrophryniscus leucomystax</option>
+<option>Dendrophryniscus imitator</option>
+<option>Fritziana mitus</option>
+</select>
+<small class="hint">Selecione a opção.</small></div>
+<div class="f w"><label for="loc">Local</label><input id="loc" placeholder="Coletado automaticamente"></div>
+<div class="f"><label for="dat">Data</label><input id="dat" inputmode="numeric" placeholder="AAAA-MM-DD" maxlength="10" autocomplete="off"></div>
+<div class="f"><label for="hor">Horário</label><input id="hor" placeholder="HH:MM" maxlength="5" inputmode="numeric" autocomplete="off"></div>
+<div class="f"><label for="lat">Latitude</label><input id="lat" inputmode="decimal"></div>
+<div class="f"><label for="lon">Longitude</label><input id="lon" inputmode="decimal"></div>
+<div class="f"><label for="mas">Massa (g)</label><input id="mas" inputmode="decimal"></div>
+<div class="f"><label for="svl">SVL (mm)</label><input id="svl" inputmode="decimal"></div>
+<div class="f w"><label for="obs">Observações</label><textarea id="obs"></textarea></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>2) Dados da Bromélia</legend>
+<div class="g">
+<div class="f w"><label for="b_esp">Espécie de bromélia</label><input id="b_esp" autocomplete="off" autocapitalize="off"></div>
+<div class="f"><label for="b_alt">Altura do solo (cm)</label><input id="b_alt" inputmode="decimal"></div>
+<div class="f"><label for="b_fol">Número de folhas</label><input id="b_fol" inputmode="numeric"></div>
+<div class="f"><label for="b_larg">Largura da folha (mm)</label><input id="b_larg" inputmode="decimal"></div>
+<div class="f"><label for="b_cond">Condutividade (µS/cm)</label><input id="b_cond" inputmode="decimal"></div>
+<div class="f"><label for="b_ph">pH</label><input id="b_ph" inputmode="decimal"></div>
+<div class="f"><label for="b_tagua">Temperatura da água (°C)</label><input id="b_tagua" inputmode="decimal"></div>
+<div class="f"><label for="b_tar">Temperatura do ar (°C)</label><input id="b_tar" inputmode="decimal"></div>
+<div class="f"><label for="b_umid">Umidade do ar (%)</label><input id="b_umid" inputmode="decimal"></div>
+<div class="f"><label for="b_vol">Volume de água no tanque (mL)</label><input id="b_vol" inputmode="decimal"></div>
+<div class="f"><label for="b_exp">Exposição solar (lux)</label><input id="b_exp" inputmode="decimal"></div>
+</div>
+</fieldset>
+
+<div class="row">
+<button type="button" class="s" id="relo">Atualizar localização</button>
+<button type="submit" id="sv">Salvar registro</button>
+</div>
+</form>
+
+<section class="list">
+<div class="top"><h2 id="cnt">Registros</h2><button type="button" id="exp">Exportar CSV</button></div>
+<div id="items"></div>
+<p class="msg" id="msg"></p>
+<textarea class="out" id="out" readonly hidden></textarea>
+</section>
+</main>
+<script>
+(function(){
+var KEY="caderno-bromelia-v1",recs=[],editing=null,acc="";
+var $=function(i){return document.getElementById(i)};
+var F=["num","esp","sexo","loc","dat","hor","lat","lon","mas","svl","obs",
+        "b_esp","b_alt","b_fol","b_larg","b_cond","b_ph","b_tagua","b_tar","b_umid","b_vol","b_exp"];
+var H=["numeroCampo","especie","sexo","local","data","horario","latitude","longitude",
+       "massa_g","svl_mm","observacoes",
+       "bromelia_especie","altura_solo_cm","numero_folhas","largura_folha_mm",
+       "condutividade_uScm","pH","temp_agua_C","temp_ar_C","umidade_ar_pct",
+       "volume_tanque_mL","exposicao_solar_lux"];
+
+function load(){try{var r=localStorage.getItem(KEY);recs=r?JSON.parse(r):[]}catch(e){recs=[]}if(!Array.isArray(recs))recs=[]}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(recs))}catch(e){$("msg").textContent="Não foi possível salvar no aparelho. Exporte o CSV logo."}}
+function p2(n){return String(n).padStart(2,"0")}
+function now(){
+  var d=new Date();
+  $("dat").value=d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate());
+  $("hor").value=p2(d.getHours())+":"+p2(d.getMinutes());
+}
+function nextNum(){
+  var last=recs.length?String(recs[recs.length-1].num):"";
+  var m=last.match(/^(.*?)(\d+)$/);
+  return m?m[1]+String(+m[2]+1).padStart(m[2].length,"0"):"";
+}
+function gps(){
+ var g=$("gps");
+ if(!navigator.geolocation){g.textContent="Localização indisponível. Digite as coordenadas.";return}
+ g.textContent="Buscando localização…";
+ navigator.geolocation.getCurrentPosition(function(p){
+  $("lat").value=p.coords.latitude.toFixed(6);
+  $("lon").value=p.coords.longitude.toFixed(6);
+  acc=Math.round(p.coords.accuracy);
+  g.textContent="Localização capturada (precisão ~"+acc+" m).";
+ },function(){acc="";g.textContent="Sem acesso à localização. Digite as coordenadas ou permita o GPS."},
+ {enableHighAccuracy:true,timeout:15000,maximumAge:0});
+}
+function fresh(){
+ ["num","esp","sexo","mas","svl","obs","b_esp","b_alt","b_fol","b_larg","b_cond","b_ph","b_tagua","b_tar","b_umid","b_vol","b_exp"].forEach(function(k){$(k).value=""});
+ $("num").value=nextNum();now();gps();editing=null;$("sv").textContent="Salvar registro";
+}
+function esc(v){v=String(v==null?"":v);return /[",\n\r;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+function uid(){try{if(window.crypto&&crypto.randomUUID)return crypto.randomUUID()}catch(e){}
+ return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=Math.random()*16|0;return(c==="x"?r:(r&3|8)).toString(16)})}
+function csv(){
+ var ch=false;recs.forEach(function(r){if(!r.id){r.id=uid();ch=true}});if(ch)save();
+ var rows=[H.join(",")];
+ recs.forEach(function(r){
+  rows.push(F.map(function(k){return esc(r[k]||"")}).join(","));
+ });
+ return rows.join("\r\n");
+}
+function render(){
+ $("cnt").textContent="Registros ("+recs.length+")";
+ var box=$("items");box.textContent="";
+ if(!recs.length){var e=document.createElement("p");e.className="empty";e.textContent="Nenhum registro salvo ainda.";box.appendChild(e);return}
+ recs.slice().reverse().forEach(function(r,ri){
+  var i=recs.length-1-ri,d=document.createElement("div");d.className="it";
+  var t=document.createElement("div"),b=document.createElement("b"),s=document.createElement("span");
+  b.textContent=(r.num||"(sem nº)")+" · "+(r.esp||"sem espécie");
+  var b2=r.b_esp?("bromélia: "+r.b_esp):"";
+  var b3=r.b_larg?("larg. folha: "+r.b_larg+" mm"):"";
+  s.textContent=[r.sexo,r.loc,r.dat,r.hor,b2,b3].filter(Boolean).join(" · ");
+  t.appendChild(b);t.appendChild(s);
+  var bt=document.createElement("div");bt.className="b";
+  var ed=document.createElement("button");ed.type="button";ed.className="s";ed.textContent="Editar";
+  ed.onclick=function(){edit(i)};
+  var de=document.createElement("button");de.type="button";de.className="d";de.textContent="Apagar";
+  de.onclick=function(){if(confirm("Apagar o registro "+(r.num||"")+"?")){recs.splice(i,1);save();render()}};
+  bt.appendChild(ed);bt.appendChild(de);d.appendChild(t);d.appendChild(bt);box.appendChild(d);
+ });
+}
+function edit(i){
+ var r=recs[i];editing=i;
+ F.forEach(function(k){$(k).value=r[k]==null?"":r[k]});
+ acc=r.prec||"";
+ $("sv").textContent="Atualizar registro";$("gps").textContent="Editando "+(r.num||"registro")+".";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+$("f").addEventListener("submit",function(ev){
+ ev.preventDefault();
+ var r={};F.forEach(function(k){r[k]=$(k).value.trim()});
+ r.prec=acc;
+ r.id=editing!==null&&recs[editing].id?recs[editing].id:uid();
+ if(editing!==null){recs[editing]=r}else{recs.push(r)}
+ save();render();
+ fresh();
+ $("msg").textContent="Registro "+(r.num||"")+" salvo.";
+});
+$("relo").onclick=gps;
+$("exp").onclick=function(){
+ var out=$("out");
+ if(!recs.length){$("msg").textContent="Salve ao menos um registro antes de exportar.";return}
+ var data=csv(),d=new Date(),name="bromelia_"+d.getFullYear()+p2(d.getMonth()+1)+p2(d.getDate())+".csv";
+ function fallback(){out.hidden=false;out.value=data;out.select();$("msg").textContent="Não foi possível baixar. Copie o texto abaixo e cole em um arquivo .csv."}
+ try{
+  var bl=new Blob([data],{type:"text/csv;charset=utf-8"}),
+      u=URL.createObjectURL(bl),
+      an=document.createElement("a");
+  an.href=u;an.download=name;document.body.appendChild(an);an.click();an.remove();
+  setTimeout(function(){URL.revokeObjectURL(u)},4000);
+  $("msg").textContent="CSV exportado para a pasta Downloads.";
+ }catch(e){fallback()}
+};
+load();render();fresh();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});
+})();
+</script>
+</body>
+</html>

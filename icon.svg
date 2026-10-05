@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Sapo sobre bromélia">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#1e625d"/>
+      <stop offset="100%" stop-color="#0a3030"/>
+    </radialGradient>
+    <linearGradient id="frogGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7ecc4"/>
+      <stop offset="100%" stop-color="#c9a04a"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="240" fill="none" stroke="#c9a04a" stroke-width="3" opacity="0.45"/>
+
+  <!-- BROMÉLIA: roseta de folhas -->
+  <path d="M256 480 C160 420 80 320 50 210 C130 300 200 400 256 480 Z" fill="#2d7d6a"/>
+  <path d="M256 480 C352 420 432 320 462 210 C382 300 312 400 256 480 Z" fill="#2d7d6a"/>
+
+  <path d="M256 480 C190 400 140 280 125 160 C180 270 230 390 256 480 Z" fill="#3f9379"/>
+  <path d="M256 480 C322 400 372 280 387 160 C332 270 282 390 256 480 Z" fill="#3f9379"/>
+
+  <path d="M256 480 C225 380 205 260 200 150 C230 260 248 380 256 480 Z" fill="#57ad8e"/>
+  <path d="M256 480 C287 380 307 260 312 150 C282 260 264 380 256 480 Z" fill="#57ad8e"/>
+
+  <path d="M256 480 C244 380 240 260 245 150 C252 260 254 380 256 480 Z" fill="#6ec6a3"/>
+  <path d="M256 480 C268 380 272 260 267 150 C260 260 258 380 256 480 Z" fill="#6ec6a3"/>
+
+  <!-- SAPO arborícola -->
+  <ellipse cx="197" cy="352" rx="17" ry="24" transform="rotate(-28 197 352)" fill="url(#frogGrad)"/>
+  <ellipse cx="315" cy="352" rx="17" ry="24" transform="rotate(28 315 352)" fill="url(#frogGrad)"/>
+
+  <ellipse cx="256" cy="325" rx="60" ry="52" fill="url(#frogGrad)"/>
+  <ellipse cx="256" cy="280" rx="54" ry="40" fill="url(#frogGrad)"/>
+
+  <circle cx="226" cy="252" r="18" fill="url(#frogGrad)"/>
+  <circle cx="286" cy="252" r="18" fill="url(#frogGrad)"/>
+  <circle cx="226" cy="252" r="9" fill="#0a3030"/>
+  <circle cx="286" cy="252" r="9" fill="#0a3030"/>
+  <circle cx="230" cy="247" r="3" fill="#ffffff"/>
+  <circle cx="290" cy="247" r="3" fill="#ffffff"/>
+
+  <path d="M234 296 Q256 308 278 296" stroke="#0a3030" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.45"/>
+
+  <path d="M215 340 Q200 358 195 368" stroke="url(#frogGrad)" stroke-width="11" fill="none" stroke-linecap="round"/>
+  <path d="M297 340 Q312 358 317 368" stroke="url(#frogGrad)" stroke-width="11" fill="none" stroke-linecap="round"/>
+
+  <!-- dedos com ventosas (característico de pererecas) -->
+  <circle cx="192" cy="370" r="9" fill="url(#frogGrad)"/>
+  <circle cx="205" cy="374" r="9" fill="url(#frogGrad)"/>
+  <circle cx="183" cy="362" r="8" fill="url(#frogGrad)"/>
+
+  <circle cx="320" cy="370" r="9" fill="url(#frogGrad)"/>
+  <circle cx="307" cy="374" r="9" fill="url(#frogGrad)"/>
+  <circle cx="329" cy="362" r="8" fill="url(#frogGrad)"/>
+</svg>
